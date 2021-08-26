@@ -1,0 +1,18 @@
+{
+  "name": "react-menubar-starter",
+  "version": "0.1.0",
+  "description": "React menubar starter",
+  "main": "main.js",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "packager": "electron-packager . HelloApp --platform=darwin --arch=x64 --icon=Icon.icns"
+  },
+  "dependencies": {
+    "electron-packager": "15.3.0",
+    "menubar": "^9.0.5"
+  },
+  "devDependencies": {
+    "electron": "^13.2.2"
+  }
+}
