@@ -5,9 +5,11 @@
   "main": "main.js",
   "private": true,
   "scripts": {
-    "start": "electron .",
-    "build": "webpack --mode=production",
-    "dev": "webpack --mode=development --watch",
+    "start": "concurrently \"npm:watch-*\"",
+    "watch-el": "electron .",
+    "watch-ui": "webpack --mode=development --watch",
+    "build": "npm run build-ui && npm run packager",
+    "build-ui": "webpack --mode=production",
     "packager": "electron-packager . HelloApp --platform=darwin --arch=x64 --icon=Icon.icns"
   },
   "dependencies": {
@@ -17,6 +19,7 @@
     "react-dom": "17.0.2"
   },
   "devDependencies": {
+    "concurrently": "6.2.1",
     "swc-loader": "0.1.14",
     "@swc/cli": "0.1.49",
     "@swc/core": "1.2.82",
