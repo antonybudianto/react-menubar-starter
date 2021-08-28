@@ -1,15 +1,17 @@
 {
   "name": "react-menubar-starter",
   "version": "0.1.0",
-  "description": "React menubar starter",
+  "description": "React menubar starter - React, Tailwinds",
   "main": "main.js",
   "private": true,
   "scripts": {
-    "start": "concurrently \"npm:watch-*\"",
+    "start": "NODE_ENV=development concurrently \"npm:watch-*\"",
     "watch-el": "electron .",
     "watch-ui": "webpack --mode=development --watch",
-    "build": "npm run build-ui && npm run packager",
+    "watch-tw": "npx tailwindcss -i src/tailwind.css -o lib/tailwind.css -- watch",
+    "build": "rm -rf HelloApp-darwin-* && npm run build-tw && npm run build-ui && npm run packager",
     "build-ui": "webpack --mode=production",
+    "build-tw": "NODE_ENV=production npx tailwindcss -i src/tailwind.css -o lib/tailwind.css --minify",
     "packager": "electron-packager . HelloApp --platform=darwin --arch=x64 --icon=Icon.icns"
   },
   "dependencies": {
@@ -19,11 +21,14 @@
     "react-dom": "17.0.2"
   },
   "devDependencies": {
-    "concurrently": "6.2.1",
-    "swc-loader": "0.1.14",
     "@swc/cli": "0.1.49",
     "@swc/core": "1.2.82",
+    "concurrently": "6.2.1",
     "electron": "13.2.2",
+    "swc-loader": "0.1.14",
+    "tailwindcss": "2.2.8",
+    "postcss": "^8.3.6",
+    "autoprefixer": "10.3.3",
     "webpack": "^5.51.1",
     "webpack-cli": "^4.8.0"
   }

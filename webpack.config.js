@@ -1,4 +1,5 @@
 module.exports = {
+  stats: "minimal",
   entry: {
     web: __dirname + "/src/index.js",
   },

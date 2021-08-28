@@ -4,9 +4,10 @@ const mb = menubar();
 
 mb.on("ready", () => {
   console.log("app is ready");
-  // your app code here
 });
 
-mb.on("after-create-window", () => {
-  mb.window.openDevTools();
-});
+if (process.env.NODE_ENV === "development") {
+  mb.on("after-create-window", () => {
+    mb.window.openDevTools();
+  });
+}
